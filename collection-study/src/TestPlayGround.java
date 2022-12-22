@@ -1,5 +1,24 @@
 import java.util.*;
 
+enum Animal {
+    Doggo("doggo"), Kitty("kitty"), Shiba("shiba");
+
+    private static final Animal[] animals = Animal.values();
+    private final String name;
+
+    Animal(String name) {
+        this.name = name;
+    }
+}
+
+enum SingleTonEnum {
+    UNIQUE_INSTANCE;
+
+    void sayHello() {
+        System.out.println("Hello World");
+    }
+}
+
 class Data implements Comparable {
     int val;
 
@@ -30,6 +49,8 @@ class MyComparator implements Comparator {
 
 public class TestPlayGround {
     public static void main(String[] args) {
+        SingleTonEnum s = SingleTonEnum.UNIQUE_INSTANCE;
+        s.sayHello();
         Data d1 = new Data(4);
         Data d2 = new Data(44);
         Data d3 = new Data(444);
@@ -58,5 +79,8 @@ public class TestPlayGround {
         }
         System.out.println(arr2D3.length);
 
+        for (Animal animal : Animal.values()) {
+            System.out.println("animal = " + animal);
+        }
     }
 }
